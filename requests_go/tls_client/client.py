@@ -11,7 +11,7 @@ else:
     if machine() == "aarch64":
         file_ext = '-arm64.so'
     elif "x86" in machine():
-        file_ext = '-x86.so'
+        file_ext = '-amd64.so'
     else:
         file_ext = '-amd64.so'
 
