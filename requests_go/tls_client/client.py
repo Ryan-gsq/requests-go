@@ -6,7 +6,7 @@ from platform import machine
 if platform == 'darwin':
     file_ext = '-arm64.dylib' if machine() == "arm64" else '-x86.dylib'
 else:
-    file_ext = '-arm64.so'
+    file_ext = '-amd64.so'
 
 root_dir = os.path.abspath(os.path.dirname(__file__))
 library = ctypes.cdll.LoadLibrary(f'{root_dir}/dependencies/requests-go{file_ext}')
