@@ -1,3 +1,5 @@
+import base64
+
 from requests.cookies import RequestsCookieJar
 from .structures import CaseInsensitiveDict
 
@@ -83,8 +85,6 @@ def build_response(res: Union[dict, list]) -> Response:
                 "HttpOnly": http_only
             }
             response.cookies.set(name=name, value=value, path=path, domain=domain, expires=expires, secure=secure, rest=rest)
-    # Add response body
-    response.text = res["content"]
     # Add response content (bytes)
-    response._content = res["content"].encode()
+    response._content = base64.b64decode(res["content"].encode())
     return response
